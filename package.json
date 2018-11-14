@@ -1,0 +1,52 @@
+{
+  "name": "devinc",
+  "version": "0.0.1",
+  "description": "template for basic html5 site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Showcase-Joz/devinc-template.git"
+  },
+  "keywords": [
+    "template",
+    "html5",
+    "website",
+    "npm",
+    "node",
+    "auto",
+    "setup"
+  ],
+  "author": "Joz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Showcase-Joz/devinc-template/issues"
+  },
+  "homepage": "https://github.com/Showcase-Joz/devinc-template#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "browser-sync": "^2.26.3",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-size": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "gulp-uglifycss": "^1.0.9",
+    "svgo": "^1.0.5"
+  },
+  "dependencies": {
+    "animate.css": "^3.6.1",
+    "normalize.css": "^8.0.1"
+  }
+}
