@@ -1,20 +1,24 @@
 {
-  "name": "devinc",
+  "name": "barebonesv4",
   "version": "0.0.1",
-  "description": "template for basic html5 site",
+  "description": "template for gulp'd babel'd html5 site or app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Showcase-Joz/devinc-template.git"
+    "url": "git+https://github.com/Showcase-Joz/barebones-v4.git"
   },
   "keywords": [
     "template",
     "html5",
     "website",
     "npm",
+    "gulp",
+    "browserSync",
+    "babel",
+    "imagemin",
     "node",
     "auto",
     "setup"
@@ -22,9 +26,9 @@
   "author": "Joz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Showcase-Joz/devinc-template/issues"
+    "url": "https://github.com/Showcase-Joz/barebones-v4/issues"
   },
-  "homepage": "https://github.com/Showcase-Joz/devinc-template#readme",
+  "homepage": "https://github.com/Showcase-Joz/barebones-v4#readme",
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
