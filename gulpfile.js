@@ -49,6 +49,8 @@ function copy() {
 }
 
 // Optimize Images
+// -- watches image folder src/images
+// -- treats each image type with presets
 function images() {
   return gulp
     .src('./src/images/**/*')
@@ -74,7 +76,7 @@ function images() {
         })
     ]))
     .pipe(size({
-      title: 'Image sizes after task ',
+      title: 'Image sizes after task...',
       pretty: true,
       showTotal: true,
     }))
@@ -82,7 +84,7 @@ function images() {
 }
 
 // CSS task
-// -- watches all js files under src/scss/
+// -- watches all scss files under src/scss/
 // -- prefixes, concatenates/compresses, minifies and sourcemaps
 function css() {
   return gulp
@@ -90,6 +92,7 @@ function css() {
     .pipe(sourcemaps.init())
     .pipe(autoprefixer({
       cascade: false,
+      grid: true,
       browsers: 'last 2 versions', }))
     .pipe(sass({
       outputStyle: 'compressed', })
@@ -97,6 +100,11 @@ function css() {
     .pipe(rename({
       suffix: '.min', }))
     .pipe(sourcemaps.write(''))
+    .pipe(size({
+      title: 'CSS size after task...',
+      pretty: true,
+      showTotal: true,
+    }))
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browsersync.stream());
 }
@@ -114,7 +122,7 @@ function scripts() {
     .pipe(uglify())
     .pipe(sourcemaps.write(''))
     .pipe(size({
-      title: 'JS sizes after task ',
+      title: 'Scripts size after task...',
       pretty: true,
       showTotal: true,
     }))
@@ -149,6 +157,11 @@ gulp.task('css', css);
 gulp.task('scripts', scripts);
 gulp.task('clean', clean);
 
+// init
+gulp.task(
+  'init',
+  gulp.series(clean, gulp.parallel(copy, images, css, scripts), gulp.parallel(watchFiles, browserSync))
+);
 
 // build
 gulp.task(

@@ -1,2 +1,2 @@
 // add scripts and js here
-console.log('testing');
+console.log('Hello World');
