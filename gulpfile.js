@@ -17,7 +17,8 @@ const browsersync = require("browser-sync").create();
 function browserSync(done) {
   browsersync.init({
     server: {
-      baseDir: './dist'
+      baseDir: './dist',
+      // directory: true
     },
     port: 3000
   });
@@ -52,23 +53,37 @@ function images() {
   return gulp
     .src('./src/images/**/*')
     .pipe(newer('./dist/img'))
-    .pipe(
-      imagemin({
-        progressive: true,
-        svgoPlugins: [{
-          removeViewBox: false
-        }]
-      })
-      .pipe(size({
-        title: 'Image sizes after task ',
-        pretty: true,
-        showTotal: true,
-      }))
-    )
+    .pipe(imagemin([
+      imagemin.gifsicle({
+          interlaced: true
+        }),
+        imagemin.jpegtran({
+          progressive: true
+        }),
+        imagemin.optipng({
+          optimizationLevel: 5
+        }),
+        imagemin.svgo({
+          plugins: [{
+              removeViewBox: true
+            },
+            {
+              cleanupIDs: false
+            }
+          ]
+        })
+    ]))
+    .pipe(size({
+      title: 'Image sizes after task ',
+      pretty: true,
+      showTotal: true,
+    }))
     .pipe(gulp.dest('./dist/img'));
 }
 
 // CSS task
+// -- watches all js files under src/scss/
+// -- prefixes, concatenates/compresses, minifies and sourcemaps
 function css() {
   return gulp
     .src('./src/scss/**/*.scss')
@@ -79,22 +94,30 @@ function css() {
     .pipe(sass({
       outputStyle: 'compressed', })
       .on('error', sass.logError))
-    .pipe(gulp.dest('./dist/css/'))
     .pipe(rename({
       suffix: '.min', }))
+    .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('./dist/css/'))
     .pipe(browsersync.stream());
 }
 
+// JS task
+// -- watches all js files under src/js/
+// -- transpiles, concatenates, minifies and sourcemaps
 function scripts() {
   return (
     gulp
-    .src(['./src/js/**/*.js'])
+    .src(['./src/js/*.js'])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat('main.min.js'))
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    .pipe(sourcemaps.write(''))
+    .pipe(size({
+      title: 'JS sizes after task ',
+      pretty: true,
+      showTotal: true,
+    }))
     .pipe(gulp.dest('./dist/js'))
   );
 }
@@ -102,15 +125,19 @@ function scripts() {
 // Watch files
 function watchFiles() {
   gulp.watch('./src/scss/**/*', css);
-  gulp.watch('./src/js/**/*');
+  gulp.watch([
+    './src/js/**/*'
+  ],
+  gulp.series(scripts, browserSyncReload)
+  );
   gulp.watch(
     [
-      'src/*.html',
-      'src/*.webmanifest',
-      'src/*.xml',
-      'src/*.txt',
+      './src/*.html',
+      './src/*.webmanifest',
+      './src/*.xml',
+      './src/*.txt',
     ],
-    gulp.series(browserSyncReload)
+    gulp.series(copy, browserSyncReload)
   );
   gulp.watch('./src/images/**/*', images);
 }
@@ -121,6 +148,7 @@ gulp.task('images', images);
 gulp.task('css', css);
 gulp.task('scripts', scripts);
 gulp.task('clean', clean);
+
 
 // build
 gulp.task(
