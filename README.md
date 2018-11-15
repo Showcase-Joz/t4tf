@@ -18,6 +18,7 @@ This **Barebones** project template will give you the following functionality ri
   * Watch and treat each image type _[gif | jgp | png | svg]_
 * **CSS**
   * Watches all SCSS files under the source SCSS folder
+  * Includes Normalise.scss above all css
   * Prefixes the last 2 versions
   * Add's **CSS Grid** support for -ms-
   * Compresses all _SCSS_ partials
@@ -32,3 +33,7 @@ This **Barebones** project template will give you the following functionality ri
   
   ---
   
+## Usage
+
+1. Download the repo - [https://github.com/Showcase-Joz/barebones-v4.git](https://github.com/Showcase-Joz/barebones-v4.git) to a suitable folder on your system.
+2. 
