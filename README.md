@@ -33,7 +33,25 @@ This **Barebones** project template will give you the following functionality ri
   
   ---
   
+## Installation
+
+1. Open **VS Code** and traverse to the folder you want to put your project in.
+2. Right click the folder name and _go to with terminal_
+3. In the terminal window, type `git clone https://github.com/Showcase-Joz/barebones-v4.git`
+
+**OR** Download the repo - [https://github.com/Showcase-Joz/barebones-v4.git](https://github.com/Showcase-Joz/barebones-v4.git) to a suitable folder on your system.
+
 ## Usage
 
-1. Download the repo - [https://github.com/Showcase-Joz/barebones-v4.git](https://github.com/Showcase-Joz/barebones-v4.git) to a suitable folder on your system.
-2. 
+You can use one of four commands out of the box:
+
+### gulp init
+
+
+### gulp build
+
+
+### gulp watch
+
+
+### gulp clean
