@@ -47,11 +47,26 @@ You can use one of four commands out of the box:
 
 ### gulp init
 
+Using _gulp init_ as your command will run the following sequence of tasks:
+1. Clean the _dist_ directory (if ir exists).
+2. Build an instance of the _dist_ directory, with the basic file structure.
+3. Watch all the file/folder(s) for updates/additions within the _src_ folder.
+4. Run BrowserSync, initiating the live server instance across your development devices. 
 
 ### gulp build
 
+Using _gulp build_ as your command will run the following sequence of tasks:
+1. Clean the _dist_ directory (if ir exists).
+2. Build an instance of the _dist_ directory, with the basic file structure.
 
 ### gulp watch
 
+Using _gulp watch_ as your command will run the following sequence of tasks:
+1. Watch all the file/folder(s) for updates/additions within the _src_ folder.
 
 ### gulp clean
+
+Using _gulp clean_ as your command will run the following sequence of tasks:
+1. Clean the _dist_ directory (if ir exists).
+
+---
