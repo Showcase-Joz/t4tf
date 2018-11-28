@@ -90,6 +90,11 @@ function css() {
   return gulp
     .src('./src/scss/**/*.scss')
     .pipe(sourcemaps.init())
+    .pipe(sass({
+      // includePaths: require('node-normalize-scss').with('other/path', 'another/path')
+      // - or -
+      includePaths: require('node-normalize-scss').includePaths
+    }))
     .pipe(autoprefixer({
       cascade: false,
       grid: true,

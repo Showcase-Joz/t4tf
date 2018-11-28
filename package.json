@@ -48,6 +48,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "gulp-uglifycss": "^1.0.9",
+    "node-normalize-scss": "^8.0.0",
     "svgo": "^1.0.5"
   },
   "dependencies": {

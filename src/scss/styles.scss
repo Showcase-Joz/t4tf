@@ -1,25 +1,61 @@
 /*
   Author Name: Joz
   Author URI: https://sst-l.com/
-  Note:
+  Note: declaration strategy -- layout, -- position, -- inner styles
+
   ++Do not remove the back-link in this web template
--------------------------------------------------------
 
 
+
+  -------------------------------------------------------
 */
-
+@import '_normalize.scss';
 @import '_functions';
 @import '_palette';
 
+// project fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
 
-html, body {
+html,
+body {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
-  /* font-size: 14px; */
+  font-size: 18px;
 }
 
-h1 {
-  color: $color4;
+.topbox {
+  // layout
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 60% auto;
+  justify-items: center;
+
+  // position
+  padding: 20%;
+  padding-top: 3rem;
+  height: 100vh;
+
+  // inner styles
+  background-color: paleturquoise;
+
+  h1 {
+    // inner styles
+    color: $color4;
+  }
+
+  h3 {
+    // layout
+    display: grid;
+    align-self: start;
+    justify-self: start;
+
+    // inner styles
+    color: $color2;
+  }
+
+  p {
+    color: $color1;
+  }
+
 }
