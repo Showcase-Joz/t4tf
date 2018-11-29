@@ -70,3 +70,4 @@ Using _gulp clean_ as your command will run the following sequence of tasks:
 1. Clean the _dist_ directory (if it exists).
 
 ---
+test
