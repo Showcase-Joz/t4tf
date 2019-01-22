@@ -41,6 +41,8 @@ This **Barebones** project template will give you the following functionality ri
 
 **OR** Download the repo - [https://github.com/Showcase-Joz/barebones-v4.git](https://github.com/Showcase-Joz/barebones-v4.git) to a suitable folder on your system.
 
+Move into the dir **cd barebones-v4** then type **npm install** to add the dependancies locally.
+
 ## Usage
 
 You can use one of four commands out of the box:
