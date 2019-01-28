@@ -47,6 +47,8 @@ Move into the dir **cd barebones-v4** then type **npm install** to add the depen
 
 You can use one of four commands out of the box:
 
+For a list of gulp commands try typing **gulp --tasks** to see a tree listing of what each task does. Alternatively, here is a billy-basics breakdown...
+
 ### gulp init
 
 Using _gulp init_ as your command will run the following sequence of tasks:
