@@ -49,11 +49,11 @@ function copy() {
 }
 
 // Optimize Images
-// -- watches image folder src/images
+// -- watches image folder src/img
 // -- treats each image type with presets
 function images() {
   return gulp
-    .src('./src/images/**/*')
+    .src('./src/img/**/*')
     .pipe(newer('./dist/img'))
     .pipe(imagemin([
       imagemin.gifsicle({
@@ -152,7 +152,7 @@ function watchFiles() {
     ],
     gulp.series(copy, browserSyncReload)
   );
-  gulp.watch('./src/images/**/*', images);
+  gulp.watch('./src/img/**/*', images);
 }
 
 // Tasks
