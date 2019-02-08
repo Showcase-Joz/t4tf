@@ -45,7 +45,7 @@ Move into the dir **cd barebones-v4** then type **npm install** to add the depen
 
 ## Usage
 
-You can use one of four commands out of the box:
+You need to install the packages before you can use the repo. Type **npm install** to add the packages to your local installation. Then you can use one of four commands out of the box:
 
 For a list of gulp commands try typing **gulp --tasks** to see a tree listing of what each task does. Alternatively, here is a billy-basics breakdown...
 
