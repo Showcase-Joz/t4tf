@@ -53,8 +53,8 @@ function copy() {
 // -- treats each image type with presets
 function images() {
   return gulp
-    .src('./src/img/**/*')
-    .pipe(newer('./dist/img'))
+    .src('./src/images/**/*')
+    .pipe(newer('./dist/images'))
     .pipe(imagemin([
       imagemin.gifsicle({
           interlaced: true
@@ -80,7 +80,7 @@ function images() {
       pretty: true,
       showTotal: true,
     }))
-    .pipe(gulp.dest('./dist/img'));
+    .pipe(gulp.dest('./dist/images'));
 }
 
 // CSS task
