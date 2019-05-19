@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # barebones-v4
 _gulp v4, babel es6, scss, optimised images_
 
@@ -75,3 +76,7 @@ Using _gulp clean_ as your command will run the following sequence of tasks:
 
 ---
 test
+=======
+# t4tf
+tab4thefallen website
+>>>>>>> a56561102f18407d7cb14d42fb773222d7d47a7e
