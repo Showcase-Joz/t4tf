@@ -1,0 +1,155 @@
+
+
+/* nav */
+
+body {
+	overflow-x: hidden;
+}
+.nav-wrapper {
+	position: fixed;
+	width: 100%;
+
+.nav.nav-toggle {
+	align-items: center;
+	color: darkred;
+	display: grid;
+	justify-items: end;
+	position: absolute;
+	right: 2rem;
+	top: 1.5rem;
+
+	.bar1,
+	.bar2,
+	.bar3 {
+		width: 25px;
+		height: 3px;
+		background-color: graytext;
+		margin: 3px 0;
+		transition: 0.4s;
+	}
+
+	&:hover {
+		cursor: pointer;
+		& div[class^="bar"] {
+			background-color: red;
+		}
+	}
+	
+	&:hover:focus {
+		& div[class^="bar"] {
+			background-color: green;
+		}
+	}
+	
+	&.open {
+		z-index: 10;
+		transition: z-index .5s ease-in;
+	}
+
+	&.open .bar1 {
+		transform: rotate(-45deg) translate(-4px, 7px);
+	}
+
+	&.open .bar2 {
+		opacity: 0;
+	}
+
+	&.open .bar3 {
+		transform: rotate(45deg) translate(-5px, -9px);
+	}
+}
+
+nav.nav-menu {
+	background-color: rgba(slategray, 0.9);
+	box-sizing: border-box;
+	border-left: double 6px white;
+	display: grid;
+	grid-template-areas:
+		"brand"
+		"menu-wrapper"
+		"copyright";
+	height: 100vh;
+	padding: 1rem;
+	position: relative;
+	right: -100vw;
+	transition-duration: 1.5s;
+	transition-delay: .5s;
+	transition-property: right;
+	transition-timing-function: cubic-bezier(.22,.68,0,1.71);
+	width: 50vw;
+	z-index: 1;
+
+	&.active {
+		right: -50%;
+		transition-duration: 1.5s;
+		transition-delay: .5s;
+		transition-timing-function: cubic-bezier(0.32, 2, 0.55, 0.27);
+		transition-property: right;
+		
+		@media screen and (min-width: 600px) {
+			right: -60vw;
+			width: 40vw;
+		}
+	}
+
+	.brand {
+		align-self: start;
+		align-items: center;
+		border-bottom: 1px solid black;
+		grid-area: brand;
+		display: grid;
+		grid-template-columns: minmax(max-content, 80%);
+		margin-bottom: 3rem;
+		min-height: 3rem;
+		max-height: 5rem;
+		width: 100%;
+	}
+
+	.menu-wrapper {
+		height: inherit;
+		max-height: 70vh;
+		overflow-y: auto;
+
+		.menu-item {
+			border-top: 1px solid darken(white, 20%);
+			cursor: pointer;
+			font-size: large;
+			padding: 5px 0 5px 0;
+			transition: all 300ms ease-in;
+
+			&:last-of-type {
+				border-bottom: 1px solid darken(white, 20%);
+			}
+
+			&:hover::before {
+				content: "\2192 \00A0";
+				color: white;
+			}
+
+			&:hover {
+				border-top: 1.5px solid white;
+				border-bottom: 1.5px solid white;
+				color: darken(white, 20%);
+				font-weight: 900;
+				line-height: 1.5;
+				padding-top: 8px;
+				padding-bottom: 8px;
+				transition: all 300ms ease-in;
+			}
+		}
+	}
+
+	.copyright {
+		align-self: end;
+		justify-self: end;
+	}
+
+	.brand,
+	.copyright > sub > span {
+		color: white;
+	}
+	.copyright > sub {
+		color: darken(white, 20%);
+	}
+}
+}

@@ -12,6 +12,7 @@
 @import 'normalize';
 @import '_functions';
 @import '_palette';
+@import '_nav';
 
 // project fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
@@ -24,38 +25,32 @@ body {
   font-size: 18px;
 }
 
-.topbox {
-  // layout
-  display: grid;
-  grid-template-columns: 60% 40%;
-  grid-template-rows: 60% auto;
-  justify-items: center;
 
-  // position
-  padding: 20%;
-  padding-top: 3rem;
-  height: 100vh;
 
-  // inner styles
-  background-color: paleturquoise;
+/* LAYOUT STRUCTURE /*
 
-  h1 {
-    // inner styles
-    color: $color4;
-  }
+/* sections */
 
-  h3 {
-    // layout
-    display: grid;
-    align-self: start;
-    justify-self: start;
-
-    // inner styles
-    color: $color2;
-  }
-
-  p {
-    color: $color1;
-  }
-
+.page-wrapper {
+	display: grid;
+	grid-template-rows: repeat(auto-fill, minmax(max-content, max-content));
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+	scroll-snap-type: y mandatory;
+	
+	.grid-item {
+		min-height: 100vh;
+		padding: 5rem 3rem;
+		scroll-snap-align: start;
+		
+		&:nth-of-type(3n+1) {
+			background-color: palegreen;
+		}
+		&:nth-of-type(3n+2) {
+			background-color: palegoldenrod;
+		}
+		&:nth-of-type(3n+3) {
+			background-color: paleturquoise;
+		}
+	}
 }

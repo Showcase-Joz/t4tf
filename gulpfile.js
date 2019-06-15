@@ -7,6 +7,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const del = require('del');
 const newer = require('gulp-newer');
+const htmlmin = require('gulp-htmlmin');
 const uglify = require('gulp-uglify');
 const autoprefixer = require('gulp-autoprefixer');
 const size = require('gulp-size');
@@ -39,13 +40,25 @@ function clean() {
 // Copy all HTML files
 function copy() {
   return gulp
-  .src([
-    './src/*.html',
-    './src/*.webmanifest',
-    './src/*.xml',
-    './src/*.txt',
-  ])
-  .pipe(gulp.dest('./dist/'))
+    .src([
+      './src/*.html',
+      './src/*.webmanifest',
+      './src/*.xml',
+      './src/*.txt',
+    ])
+    .pipe(gulp.dest('./dist/'))
+}
+
+// Collapse all html whitespace 
+function html() {
+  return gulp
+    .src([
+      './src/*.html',
+    ])
+    .pipe(htmlmin({
+      collapseWhitespace: true
+    }))
+    .pipe(gulp.dest('./dist'));
 }
 
 // Optimize Images
@@ -57,23 +70,23 @@ function images() {
     .pipe(newer('./dist/images'))
     .pipe(imagemin([
       imagemin.gifsicle({
-          interlaced: true
-        }),
-        imagemin.jpegtran({
-          progressive: true
-        }),
-        imagemin.optipng({
-          optimizationLevel: 5
-        }),
-        imagemin.svgo({
-          plugins: [{
-              removeViewBox: true
-            },
-            {
-              cleanupIDs: false
-            }
-          ]
-        })
+        interlaced: true
+      }),
+      imagemin.jpegtran({
+        progressive: true
+      }),
+      imagemin.optipng({
+        optimizationLevel: 5
+      }),
+      imagemin.svgo({
+        plugins: [{
+            removeViewBox: true
+          },
+          {
+            cleanupIDs: false
+          }
+        ]
+      })
     ]))
     .pipe(size({
       title: 'Image sizes after task...',
@@ -98,12 +111,15 @@ function css() {
     .pipe(autoprefixer({
       cascade: false,
       grid: true,
-      browsers: 'last 2 versions', }))
+      browsers: 'last 2 versions',
+    }))
     .pipe(sass({
-      outputStyle: 'compressed', })
+        outputStyle: 'compressed',
+      })
       .on('error', sass.logError))
     .pipe(rename({
-      suffix: '.min', }))
+      suffix: '.min',
+    }))
     .pipe(sourcemaps.write(''))
     .pipe(size({
       title: 'CSS size after task...',
@@ -120,7 +136,10 @@ function css() {
 function scripts() {
   return (
     gulp
-    .src(['./src/js/*.js'])
+    .src([
+      './node_modules/smooth-scroll/dist/smooth-scroll.js',
+      './src/js/*.js'
+    ])
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(concat('main.min.js'))
@@ -139,9 +158,9 @@ function scripts() {
 function watchFiles() {
   gulp.watch('./src/scss/**/*', css);
   gulp.watch([
-    './src/js/**/*'
-  ],
-  gulp.series(scripts, browserSyncReload)
+      './src/js/**/*'
+    ],
+    gulp.series(scripts, browserSyncReload)
   );
   gulp.watch(
     [
@@ -171,7 +190,7 @@ gulp.task(
 // build
 gulp.task(
   'build',
-  gulp.series(clean, gulp.parallel(copy, images, css, scripts))
+  gulp.series(clean, gulp.parallel(copy, images, html, css, scripts))
 );
 
 

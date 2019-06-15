@@ -53,6 +53,8 @@
   },
   "dependencies": {
     "animate.css": "^3.6.1",
-    "normalize.css": "^8.0.1"
+    "gulp-htmlmin": "^5.0.1",
+    "normalize.css": "^8.0.1",
+    "smooth-scroll": "^16.1.0"
   }
 }
