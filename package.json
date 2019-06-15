@@ -1,6 +1,6 @@
 {
-  "name": "barebonesv4",
-  "version": "0.0.1",
+  "name": "tab4thefallen",
+  "version": "0.1.1",
   "description": "template for gulp'd babel'd html5 site or app",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,7 @@
     "setup"
   ],
   "author": "Joz",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Showcase-Joz/barebones-v4/issues"
   },
@@ -33,7 +33,7 @@
     "@babel/core": "^7.1.6",
     "@babel/preset-env": "^7.1.6",
     "@babel/preset-react": "^7.0.0",
-    "browser-sync": "^2.26.5",
+    "browser-sync": "^2.26.7",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^5.0.0",
