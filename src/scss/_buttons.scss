@@ -1,0 +1,143 @@
+
+$font-size: 1.3rem;
+$hover-color: limegreen;
+$opacity: 0.85;
+$padding: 2rem;
+$primary-color: salmon;
+$primary-column: 55%;
+$radius: 5px;
+$secondary-color: white;
+
+/* button and element styling */
+
+.btn {
+	align-self: center;
+	align-items: center;
+	background-color: $primary-color;
+	border-radius: $radius;
+	cursor: pointer;
+	display: grid;
+	grid-template-columns: $primary-column calc(100% - #{$primary-column});
+    justify-items: stretch;
+    max-height: 72px;
+	min-width: min-content;
+	max-width: stretch;
+	padding: 0;
+	position: relative;
+	transition: all ease-out 300ms;
+	width: max-content;
+	
+	// bulk font styling
+	span,
+	i,
+	&::before {
+		font-size: $font-size;
+		text-align: center;
+		text-transform: uppercase;
+	}
+	
+	// set span basics
+	span {
+		color: $secondary-color;
+		margin: auto 1rem;
+	}
+	
+	// set icon section appearance
+	i {
+		align-content: center;
+		align-items: center;
+		background-color: $secondary-color;
+		border-bottom-right-radius: $radius;
+		border-top-right-radius: $radius;
+		color: $primary-color;
+		display: grid;
+		font-family: "Font Awesome 5 Free";
+		font-size: 2rem;
+		font-weight: 600;
+		justify-content: center;
+		justify-items: center;
+        margin: initial;
+        max-height: inherit;
+		padding: $padding;
+		position: relative;
+		width: 100%;
+		z-index: 1;
+	}
+
+	// include data attribute for hover title
+	&::before {
+		content: attr(data-title);
+		position: absolute;
+		overflow: hidden;
+		width: 0;
+	}
+
+	// set initial overlay effect
+	&::after {
+        background-color: $hover-color;
+        border-bottom-left-radius: $radius;
+        border-top-left-radius: $radius;
+        content: "";
+        display: inline-block;
+		height: 100%;
+		overflow: hidden;
+		position: absolute;
+        transform: translateY(0%);
+		transition: width cubic-bezier(0.175, 0.885, 0.32, 1.275) 300ms;
+		width: 10px;
+	}
+
+	// set overlay font details
+	&:hover {
+		color: white;
+		font-weight: 600;
+	}
+
+	// set overlay width, depth and effect
+	&:hover::before {
+		transition: width cubic-bezier(0.175, 0.885, 0.32, 1.275) 600ms;
+		width: $primary-column;
+		z-index: 5;
+	}
+
+	// on hover pass green bg from left to right
+	&:hover::after {
+		border-radius: $radius;
+		transition: width cubic-bezier(0.175, 0.885, 0.32, 1.175) 300ms;
+		width: 100%;
+	}
+	
+	// on hover show hover icon
+	&:hover i::before {
+		color: $hover-color;
+        content: "\f06b";
+		display: inline-flex;
+		transition: color cubic-bezier(0.175, 0.885, 0.32, 1.175) 200ms;
+	}
+}
+
+
+/* social icons */
+
+.social-group {
+	align-items: center;
+	display: grid;
+	/* autoprefixer: ignore next */
+    grid-auto-rows: minmax(30px, 1fr);
+	grid-gap: 1rem;
+	/* autoprefixer: ignore next */
+	grid-template-columns: repeat(auto-fit, minmax(30px, max-content));
+	justify-content: center;
+	// justify-items: center;
+	list-style: none;
+	margin: auto;
+	padding: 0;
+	
+	@media screen and (min-width: 600px) {
+			justify-content: right;
+		}
+
+	.social-item {
+		font-size: 0.5rem;
+	}
+}

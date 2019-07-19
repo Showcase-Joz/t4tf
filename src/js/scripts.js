@@ -39,3 +39,8 @@ var scroll = new SmoothScroll('a[href*="#"]', {
     updateURL: false, // Update the URL on scroll
     popstate: false, // Animate scrolling with the forward/backward browser buttons (requires updateURL to be true)
 });
+
+
+
+/* update current link color */
+

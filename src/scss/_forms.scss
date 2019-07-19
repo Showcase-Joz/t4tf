@@ -1,0 +1,187 @@
+$font-size: 1.3rem;
+$invalid-color: darkred;
+$opacity: 0.85;
+$padding-small: 1rem;
+$padding: 2rem;
+$primary-color: salmon;
+$radius: 5px;
+$secondary-color: white;
+$valid-color: limegreen;
+
+/* Create placeholder mixin */
+
+@mixin placeholder($color, $size:"") {
+	&::-webkit-input-placeholder {
+		color: $color;
+		@if $size != "" {
+			font-size: $size;
+		}
+	}
+	&:-moz-placeholder {
+		color: $color;
+		@if $size != "" {
+			font-size: $size;
+		}
+	}
+	&::-moz-placeholder {
+		color: $color;
+		@if $size != "" {
+			font-size: $size;
+		}
+	}
+	&:-ms-input-placeholder {
+		color: $color;
+		@if $size != "" {
+			font-size: $size;
+		}
+	}
+}
+
+/* form and element styling */
+
+.simple-email-form {
+	display: grid;
+	grid-template-rows: minmax(min-content, 80%) 1fr;
+	height: min-content;
+	width: 100%;
+	
+	@media screen and (min-width: 500px) {
+		grid-template-columns: minmax(min-content, 80%) 1fr;
+	}
+
+	.email-label {
+		position: relative;
+	}
+
+	.email-label,
+	.email-button {
+		border-bottom-left-radius: $radius;
+		border-top-left-radius: $radius;
+		border-bottom-right-radius: $radius;
+		border-top-right-radius: $radius;
+		display: inherit;
+		width: 100%;
+	}
+
+	.email-label > input[type="email"],
+	.email-button > input[type="submit"] {
+		border: $primary-color solid 1px;
+		border-bottom-left-radius: $radius;
+		border-top-left-radius: $radius;
+		border-bottom-right-radius: $radius;
+		border-top-right-radius: $radius;
+		font-size: $font-size;
+		padding: $padding-small;
+		
+		@media screen and (min-width: 500px) {
+			padding: $padding;
+			width: inherit;
+		}
+	}
+
+	.email-label > input[type="email"] {
+		appearance: none;
+		background-color: rgba(255, 255, 255, $opacity);
+		border-top-right-radius: inherit;
+		border-top-left-radius: inherit;
+		border-bottom-right-radius: 0;
+		border-bottom-left-radius: 0;
+		color: $primary-color;
+		cursor: text;
+		@include placeholder($primary-color, $font-size);
+		transition: background-color 300ms ease-in;
+
+		@media screen and (min-width:500px) {
+			border-bottom-left-radius: inherit;
+			border-top-left-radius: inherit;
+			border-top-right-radius: 0;
+		}
+		
+		&:hover,
+		&:focus {
+			background-color: white;
+			transition: background-color 300ms ease-in;
+			// z-index: 5;
+		}
+	}
+
+	.email-button > input[type="submit"] {
+		background-color: $primary-color;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		color: $secondary-color;
+		cursor: pointer;
+		transition: background-color 300ms ease-in;
+
+		&:hover {
+			background-color: $valid-color;
+			border-color: $valid-color;
+			transition: all 300ms ease-in;
+		}
+
+		&:hover {
+			
+		}
+		
+		@media screen and (min-width: 500px) {
+			border-top-left-radius: 0;
+			border-top-right-radius: inherit;
+			border-bottom-right-radius: inherit;
+			border-bottom-left-radius: 0;
+		}
+	}
+}
+
+/* validation style and icon */
+
+.required {
+	background-color: transparent;
+
+	input {
+		position: relative;
+		z-index: initial;
+
+		&:focus:valid {
+			box-shadow: 0 0 5px 1px $valid-color;
+			z-index: 5;
+		}
+
+		&:focus:invalid {
+			box-shadow: 0 0 5px 1px $invalid-color;
+			z-index: 5;
+		}
+	}
+
+	span::after {
+		font-size: xx-large;
+		font-weight: 300;
+		position: absolute;
+		right: 5px;
+		top: -10px;
+		transform: translateY(50%);
+		z-index: 10;
+	}
+
+	input:valid + span::after {
+		color: lighten($valid-color, 5%);
+		content: "\2713";
+	}
+	input:valid:focus + span::after {
+		color: lighten($valid-color, 15%);
+	}
+
+	input:required:invalid + span::after {
+		color: lighten($invalid-color, 5%);
+		content: "\2717";
+	}
+
+	input:invalid:focus + span::after {
+		color: lighten($invalid-color, 15%);
+	}
+	
+	input:not(:focus):invalid + span::after {
+		color: $primary-color;
+		content: "\002A";
+	}
+}
+

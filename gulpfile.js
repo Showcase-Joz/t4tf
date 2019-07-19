@@ -61,6 +61,26 @@ function html() {
     .pipe(gulp.dest('./dist'));
 }
 
+// copy font awesome to local 
+function copyFA() {
+  return gulp
+    .src([
+      './node_modules/@fortawesome/fontawesome-pro/scss/**/*',
+    ])
+    // .pipe(rename({prefix: '_',}))
+    // .pipe(header('$fa-font-path:        ".dist/css/fonts/";'))
+    .pipe(gulp.dest('./src/scss/'))
+}
+
+// Copy FA webfonts 
+function copyFAWeb() {
+  return gulp
+    .src([
+      './node_modules/@fortawesome/fontawesome-pro/webfonts/**/*'
+    ])
+    .pipe(gulp.dest('./dist/webfonts/'))
+}
+
 // Optimize Images
 // -- watches image folder src/img
 // -- treats each image type with presets
@@ -179,18 +199,20 @@ gulp.task('copy', copy);
 gulp.task('images', images);
 gulp.task('css', css);
 gulp.task('scripts', scripts);
+gulp.task('copyFA', copyFA);
+gulp.task('copyFAWeb', copyFAWeb);
 gulp.task('clean', clean);
 
 // init
 gulp.task(
   'init',
-  gulp.series(clean, gulp.parallel(copy, images, css, scripts), gulp.parallel(watchFiles, browserSync))
+  gulp.series(clean, gulp.parallel(copy, images, css, copyFA, copyFAWeb, scripts), gulp.parallel(watchFiles, browserSync))
 );
 
 // build
 gulp.task(
   'build',
-  gulp.series(clean, gulp.parallel(copy, images, html, css, scripts))
+  gulp.series(clean, gulp.parallel(copy, images, html, css, copyFA, copyFAWeb, scripts))
 );
 
 

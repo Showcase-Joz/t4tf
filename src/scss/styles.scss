@@ -9,40 +9,138 @@
 
   -------------------------------------------------------
 */
+
+
+
 @import 'normalize';
-@import '_functions';
+@import '_variables';
 @import '_palette';
+@import '_functions';
+@import '_buttons';
+@import '_forms';
 @import '_nav';
+
+@import "fontawesome.scss";
+@import "brands.scss";
+@import "light.scss";
+
 
 // project fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
 
+
+/* VARIABLES */ 
+
+$header2-font: 1.3rem;
+$font-size: 1.1rem;
+$hover-color: greenyellow;
+$opacity: 0.85;
+$padding: 2rem;
+$primary-color: salmon;
+$primary-column: 55%;
+$radius: 5px;
+$secondary-color: white;
+
+
 html,
 body {
+	box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: 18px;
 }
 
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	outline: none;
+}
 
 
-/* LAYOUT STRUCTURE /*
+
+
+// link styling defaults
+a {
+	color: $secondary-color;
+
+	&:active,
+	&:focus,
+	&:hover {
+		color: $hover-color;
+	}
+}
+
+h2 {
+	color: $hover-color;
+	font-size: $header2-font;
+	text-transform: uppercase;
+}
+p,
+address {
+	color: $secondary-color;
+	font-weight: 300;
+}
+
+address {
+	font-size: 0.9rem;
+}
+
+/* links */
+
+.linkTo {
+	padding: 10px 0;
+	text-transform: uppercase;
+	font-size: initial;
+
+	a {
+		text-decoration: none;
+	}
+
+	&.active {
+		a {
+			text-decoration: underline;
+			text-decoration-color: $hover-color;
+		}
+	}
+
+	@media screen and (min-width: 600px) {
+		padding: 5px 0;
+	}
+}
+
+/* lists */
+ul {
+	list-style: none;
+	margin-top: 0;
+	padding-left: 0;
+	
+	li.linkTo {
+		display: block;
+	}
+}
+
+/* LAYOUT STRUCTURE */
 
 /* sections */
 
 .page-wrapper {
+	background-color: palegoldenrod;
+	display: -ms-grid;
 	display: grid;
+	/* autoprefixer: ignore next */
 	grid-template-rows: repeat(auto-fill, minmax(max-content, max-content));
 	overflow-y: scroll;
 	scroll-behavior: smooth;
 	scroll-snap-type: y mandatory;
+	width: 100vw;
 	
 	.grid-item {
 		min-height: 100vh;
 		padding: 5rem 3rem;
 		scroll-snap-align: start;
-		
+				
 		&:nth-of-type(3n+1) {
 			background-color: palegreen;
 		}
@@ -53,4 +151,196 @@ body {
 			background-color: paleturquoise;
 		}
 	}
+}
+
+.nav-wrapper {
+	z-index: 5;
+	z-index: 5;
+    position: fixed;
+    right: 0vw;
+}
+
+
+#section1 {
+	height: 100%;
+	// background-image: url('https://ggia.berkeley.edu/assets/general/GGIA-SavoringWalk.jpg');
+	
+	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7vw), 0% 100%);
+	background-position: center;
+		background-image: url(../images/waiting-for-off-600.jpg);
+		background-image: 
+		  -webkit-image-set(
+			"../images/waiting-for-off-600.jpg" 1x,
+			"../images/waiting-for-off-900.jpg" 2x,
+		  );
+		background-image: 
+		  image-set(
+			"../images/waiting-for-off-600.jpg" 1x,
+			"../images/waiting-for-off-900.jpg" 2x,
+		  );
+		  background-size: cover;
+	  @media (min-width: 900px) {
+		  background-image: url(../images/waiting-for-off-900.jpg);
+		  background-image: 
+			-webkit-image-set(
+			  "../images/waiting-for-off-900.jpg" 1x,
+			  "../images/waiting-for-off-1200.jpg" 2x,
+			);
+		  background-image: 
+			image-set(
+				"../images/waiting-for-off-900.jpg" 1x,
+				"../images/waiting-for-off-1200.jpg" 2x,
+			);
+	  }
+
+	  @media (min-width: 1200px) {
+		  background-image: url(../images/waiting-for-off-1200.jpg);
+		  background-image: 
+			-webkit-image-set(
+			  "../images/waiting-for-off-1200.jpg" 1x,
+			  "../images/waiting-for-off-1800.jpg" 2x,
+			);
+		  background-image: 
+			image-set(
+				"../images/waiting-for-off-1200.jpg" 1x,
+				"../images/waiting-for-off-1800.jpg" 2x,
+			);
+	  }
+
+	  @media (min-width: 1800px) {
+		  background-image: url(../images/waiting-for-off-1800.jpg);
+		  background-image: 
+			-webkit-image-set(
+			  "../images/waiting-for-off-1800.jpg" 1x,
+			  "../images/waiting-for-off.jpg" 2x,
+			);
+		  background-image: 
+			image-set(
+				"../images/waiting-for-off-1800.jpg" 1x,
+				"../images/waiting-for-off.jpg" 2x,
+			);
+	  }
+}
+
+
+.content-wrapper {
+	display: -ms-grid;
+    display: grid;
+	height: inherit;
+	
+	#section1 & {
+		grid-template-rows: repeat(3, 1fr);
+		grid-template-areas:
+		"title"
+		"simple-email-form"
+		"btn-donate";
+
+		.title {
+			grid-area: title;
+		}
+
+		.simple-email-form {
+			grid-area: simple-email-form;
+		}
+		
+		.btn-donate {
+			grid-area: btn-donate;
+			max-width: 400px;
+		}
+	}
+
+}
+
+#section5.grid-item {
+		background-color: $primary-color;
+		display: grid;
+		grid-gap: 10px;
+		grid-template-areas:
+			"footer-1"
+			"footer-2"
+			"footer-3"
+			"social"
+			"copyright";
+		grid-template-columns: fit-content;
+		justify-items: stretch;
+		max-height: min-content;
+		padding-bottom: 1rem;
+		width: inherit;
+	
+		@media screen and (min-width: 600px) {
+			grid-template-areas:
+				"footer-1 footer-1"
+				"footer-2 footer-3"
+				"copyright social";
+		}
+	
+		@media screen and (min-width: 1200px) {
+			grid-template-areas:
+				"footer-1 footer-2 footer-3"
+				"copyright social social";
+		}
+	
+		div[class^="footer"] {
+			font-size: $font-size;
+		}
+	
+		& > div {
+			padding: 1rem;
+			text-align: center;
+		}
+	
+		.footer-1 {
+			grid-area: footer-1;
+			
+			@media screen and (min-width: 600px) {
+				text-align: left;
+			}
+		}
+	
+		.footer-2 {
+			grid-area: footer-2;
+			
+			@media screen and (min-width: 600px) {
+				text-align: left;
+			}
+			
+			@media screen and (min-width: 1200px) {
+				text-align: center;
+			}
+		}
+	
+		.footer-3 {
+			grid-area: footer-3;
+			
+			@media screen and (min-width: 600px) {
+				text-align: left;
+			}
+			
+			@media screen and (min-width: 1200px) {
+				text-align: right;
+			}
+		}
+	
+		.social {
+			grid-area: social;
+		
+		}
+	
+		.copyright {
+			grid-area: copyright;
+			
+			@media screen and (min-width: 600px) {
+				text-align: left;
+			}
+		}
+}
+
+
+/* copyright detail */
+
+.copyright > sub > span {
+	color: white;
+}
+.copyright > sub {
+	color: darken($hover-color, 10%);
 }

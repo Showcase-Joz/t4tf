@@ -1,50 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Barebones v4</title>
+  <title>Tab4theFallen</title>
 
   <link rel="stylesheet" href="/css/styles.min.css">
 </head>
+
 <body>
 
-  <div class="nav-wrapper">
-    <div class="nav nav-toggle">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
-    <nav id="nav-menu" class="nav-menu">
-      
-      <div class="brand">
-        Brand Name
-      </div>
-  
-      <div class="menu-wrapper">
-        <div class="menu-item"><a class="linkTo" href="#section1">section-1</a></div>
-        <div class="menu-item"><a class="linkTo" href="#section2">section-2</a></div>
-        <div class="menu-item"><a class="linkTo" href="#section3">section-3</a></div>
-        <div class="menu-item"><a class="linkTo" href="#section4">section-4</a></div>
-        <div class="menu-item"><a class="linkTo" href="#section5">section-5</a></div>
-      </div>
-  
-      <div class="copyright"><sub><span>Brand Name</span>&copy; <span class="year"></span></sub></div>
-    </nav>
-  </div>
-  
   <div class="page-wrapper">
-    <section id="section1" class="grid-item">section-1
-  
+
+    <div class="nav-wrapper">
+      <div class="nav nav-toggle">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+      <nav id="nav-menu" class="nav-menu">
+
+        <div class="brand">
+          Tab4theFallen
+        </div>
+
+        <div class="menu-wrapper">
+          <div class="menu-item"><a class="linkTo" href="#section1">section-1</a></div>
+          <div class="menu-item"><a class="linkTo" href="#section2">section-2</a></div>
+          <div class="menu-item"><a class="linkTo" href="#section3">section-3</a></div>
+          <div class="menu-item"><a class="linkTo" href="#section4">section-4</a></div>
+          <div class="menu-item"><a class="linkTo" href="#section5">section-5</a></div>
+        </div>
+
+        <div class="copyright"><sub><span>Tab4theFallen</span>&copy; <span class="year"></span></sub></div>
+      </nav>
+    </div>
+
+    <section id="section1" class="grid-item">
+
+
+
+      <div class="content-wrapper">
+
+        <div class="title"></div>
+        <form class="simple-email-form" role="form">
+
+          <label for="form-email" class="required email-label">
+            <input aria-label="email address input field"
+              aria-placeholder="add yourself to our mailing list to stay informed" autocomplete="email" id="form-email"
+              name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="email address" required
+              type="email" value=""><span></span>
+          </label>
+
+          <div class="email-button">
+            <input type="submit" value="Stay Informed" />
+          </div>
+        </form>
+        <div class="btn btn-donate" data-title="with a donation"><span>Help someone</span> <i class="fas fa-piggy-bank"></i></div>
+
+      </div>
     </section>
     <section id="section2" class="grid-item">section-2</section>
     <section id="section3" class="grid-item">section-3</section>
     <section id="section4" class="grid-item">section-4</section>
-    <section id="section5" class="grid-item">section-5</section>
+    <footer id="section5" class="grid-item">
+      <div class="footer-1">
+        <h2>About Us</h2>
+        <p>This footer serves to update <cite>scanfcode</cite>'s pen "Footer template" which I recently came across
+          while looking for a starting block of code. I wanted a CSS Grid footer and instead of searching through the
+          rest of the results, thought I'd use scanfcode's layout and add a sprinkle of CSS Grid.</p>
+      </div>
+      <div class="footer-2">
+        <h2>Links</h2>
+        <ul>
+          <li class="linkTo"><a href="">Visit us at home</a></li>
+          <li class="linkTo"><a href="">Learn more about us</a></li>
+          <li class="linkTo"><a href="">Products &amp; Services</a></li>
+          <li class="linkTo"><a href="">
+              Read our blog</a></li>
+          <li class="linkTo"><a href="">Contact us today</a></li>
+        </ul>
+      </div>
+      <div class="footer-3 address">
+        <h2>Address</h2>
+        <address itemscope itemtype="http://schema.org/PostalAddress">
+          <span itemprop="name">Bob Hope Entertainment Corp</span><br>
+          <span itemprop="streetAddress">1154 Pennsylvania Avenue</span><br>
+          <span itemprop="addressLocality">Washington</span>,
+          <span itemprop="addressRegion">DC</span>
+          <span itemprop="postalCode">20500</span><br>
+          <span itemprop="addressCountry">United States</span>
+        </address>
+      </div>
+      <div class="social">
+        <div class="social-group">
+          <div class="social-item">
+            <a href="#"><i class="fab fa-instagram fa-3x"></i></a>
+          </div>
+          <div class="social-item">
+            <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
+          </div>
+          <div class="social-item">
+            <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
+          </div>
+          <div class="social-item">
+            <a href="#"><i class="fab fa-linkedin fa-3x"></i></a>
+          </div>
+          <div class="social-item">
+            <a href="#"><i class="fab fa-youtube fa-3x"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright"><sub><span>Tab4theFallen</span>&copy; <span class="year"></span></sub></div>
+    </footer>
+
   </div>
 
 
   <script src="/js/main.min.js"></script>
 </body>
+
 </html>
