@@ -13,12 +13,13 @@
 
 
 @import 'normalize';
-@import '_variables';
+@import '_site-variables';
 @import '_palette';
 @import '_functions';
 @import '_buttons';
 @import '_forms';
 @import '_nav';
+@import '_elements';
 
 @import "fontawesome.scss";
 @import "brands.scss";
@@ -30,25 +31,13 @@
 
 
 
-/* VARIABLES */ 
-
-$header2-font: 1.3rem;
-$font-size: 1.1rem;
-$hover-color: greenyellow;
-$opacity: 0.85;
-$padding: 2rem;
-$primary-color: salmon;
-$primary-column: 55%;
-$radius: 5px;
-$secondary-color: white;
-
 
 html,
 body {
 	box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  font-size: 18px;
+	font-family: 'Open Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size: 18px;
 }
 
 *,
@@ -74,9 +63,10 @@ a {
 
 h2 {
 	color: $hover-color;
-	font-size: $header2-font;
+	font-size: $font-large;
 	text-transform: uppercase;
 }
+
 p,
 address {
 	color: $secondary-color;
@@ -115,11 +105,14 @@ ul {
 	list-style: none;
 	margin-top: 0;
 	padding-left: 0;
-	
+
 	li.linkTo {
 		display: block;
 	}
 }
+
+
+
 
 /* LAYOUT STRUCTURE */
 
@@ -135,212 +128,178 @@ ul {
 	scroll-behavior: smooth;
 	scroll-snap-type: y mandatory;
 	width: 100vw;
-	
+
 	.grid-item {
 		min-height: 100vh;
-		padding: 5rem 3rem;
+		padding: 3rem 1.5rem;
 		scroll-snap-align: start;
-				
+
 		&:nth-of-type(3n+1) {
 			background-color: palegreen;
 		}
+
 		&:nth-of-type(3n+2) {
 			background-color: palegoldenrod;
 		}
+
 		&:nth-of-type(3n+3) {
 			background-color: paleturquoise;
 		}
+
+		@media screen and (min-width: 600px) {
+			padding: 5rem 3rem;
+		}
 	}
+
+	
 }
 
 .nav-wrapper {
 	z-index: 5;
-	z-index: 5;
-    position: fixed;
-    right: 0vw;
+	position: fixed;
+	right: 0vw;
 }
+
+
 
 
 #section1 {
 	height: 100%;
 	// background-image: url('https://ggia.berkeley.edu/assets/general/GGIA-SavoringWalk.jpg');
-	
+
 	clip-path: polygon(0 0, 100% 0, 100% calc(100% - 7vw), 0% 100%);
 	background-position: center;
-		background-image: url(../images/waiting-for-off-600.jpg);
-		background-image: 
-		  -webkit-image-set(
-			"../images/waiting-for-off-600.jpg" 1x,
-			"../images/waiting-for-off-900.jpg" 2x,
-		  );
-		background-image: 
-		  image-set(
-			"../images/waiting-for-off-600.jpg" 1x,
-			"../images/waiting-for-off-900.jpg" 2x,
-		  );
-		  background-size: cover;
-	  @media (min-width: 900px) {
-		  background-image: url(../images/waiting-for-off-900.jpg);
-		  background-image: 
-			-webkit-image-set(
-			  "../images/waiting-for-off-900.jpg" 1x,
-			  "../images/waiting-for-off-1200.jpg" 2x,
-			);
-		  background-image: 
-			image-set(
-				"../images/waiting-for-off-900.jpg" 1x,
-				"../images/waiting-for-off-1200.jpg" 2x,
-			);
-	  }
+	background-image: url(../images/waiting-for-off-600.jpg);
+	background-image:
+		-webkit-image-set("../images/waiting-for-off-600.jpg"1x,
+			"../images/waiting-for-off-900.jpg"2x,
+		);
+	background-image:
+		image-set("../images/waiting-for-off-600.jpg"1x,
+			"../images/waiting-for-off-900.jpg"2x,
+		);
+	background-size: cover;
 
-	  @media (min-width: 1200px) {
-		  background-image: url(../images/waiting-for-off-1200.jpg);
-		  background-image: 
-			-webkit-image-set(
-			  "../images/waiting-for-off-1200.jpg" 1x,
-			  "../images/waiting-for-off-1800.jpg" 2x,
+	@media (min-width: 900px) {
+		background-image: url(../images/waiting-for-off-900.jpg);
+		background-image:
+			-webkit-image-set("../images/waiting-for-off-900.jpg"1x,
+				"../images/waiting-for-off-1200.jpg"2x,
 			);
-		  background-image: 
-			image-set(
-				"../images/waiting-for-off-1200.jpg" 1x,
-				"../images/waiting-for-off-1800.jpg" 2x,
+		background-image:
+			image-set("../images/waiting-for-off-900.jpg"1x,
+				"../images/waiting-for-off-1200.jpg"2x,
 			);
-	  }
+	}
 
-	  @media (min-width: 1800px) {
-		  background-image: url(../images/waiting-for-off-1800.jpg);
-		  background-image: 
-			-webkit-image-set(
-			  "../images/waiting-for-off-1800.jpg" 1x,
-			  "../images/waiting-for-off.jpg" 2x,
+	@media (min-width: 1200px) {
+		background-image: url(../images/waiting-for-off-1200.jpg);
+		background-image:
+			-webkit-image-set("../images/waiting-for-off-1200.jpg"1x,
+				"../images/waiting-for-off-1800.jpg"2x,
 			);
-		  background-image: 
-			image-set(
-				"../images/waiting-for-off-1800.jpg" 1x,
-				"../images/waiting-for-off.jpg" 2x,
+		background-image:
+			image-set("../images/waiting-for-off-1200.jpg"1x,
+				"../images/waiting-for-off-1800.jpg"2x,
 			);
-	  }
+	}
+
+	@media (min-width: 1800px) {
+		background-image: url(../images/waiting-for-off-1800.jpg);
+		background-image:
+			-webkit-image-set("../images/waiting-for-off-1800.jpg"1x,
+				"../images/waiting-for-off.jpg"2x,
+			);
+		background-image:
+			image-set("../images/waiting-for-off-1800.jpg"1x,
+				"../images/waiting-for-off.jpg"2x,
+			);
+	}
 }
-
 
 .content-wrapper {
 	display: -ms-grid;
-    display: grid;
+	display: grid;
 	height: inherit;
-	
+
 	#section1 & {
 		grid-template-rows: repeat(3, 1fr);
 		grid-template-areas:
-		"title"
-		"simple-email-form"
-		"btn-donate";
+			"title"
+			"simple-email-form"
+			"btn-donate";
 
 		.title {
+			color: $hover-color;
+			cursor: default;
+			font-size: $font-size-header-title;
+			font-weight: 700;
+			filter: drop-shadow(2px 4px 6px black);
 			grid-area: title;
+			line-height: $line-height-title;
+			text-align: justify;
+			text-align-last: auto;
+			text-transform: uppercase;
+			-webkit-text-stroke: 1.2px white;
+
+			@media screen and (min-width: 600px) {
+				font-size: $font-size-header-title;
+				line-height: $line-height-title;
+				text-align: center;
+				text-align-last: center;
+			}
+
+			@media screen and (min-width: 900px) {
+				font-size: calc((#{$font-size-header-title} / 2 ) * 3 );
+				line-height: normal;
+				text-align: justify;
+				text-align-last: start;
+			}
+
+			@media screen and (min-width: 1200px) {
+				font-size: calc((#{$font-size-header-title} / 2 ) * 3.5 );
+				text-align-last: justify;
+				-webkit-text-stroke: 2px white;
+			}
+
+			@media screen and (min-width: 1800px) {
+				font-size: 10rem;
+			}
 		}
 
 		.simple-email-form {
 			grid-area: simple-email-form;
 		}
-		
+
 		.btn-donate {
 			grid-area: btn-donate;
-			max-width: 400px;
 		}
 	}
+}
 
+.content-wrapper {
+	#section3 & {
+		column-gap: $grid-gap;
+		grid-template-areas: 
+		"form-message"
+		"event-form";
+
+		.event-form {
+			grid-area: event-form;
+		}
+
+		.form-message {
+			grid-area: form-message;
+		}
+
+		@media screen and (min-width: 1200px) {
+			grid-template-columns: 2fr 1fr;
+			grid-template-areas: 
+			"event-form form-message";
+		}
+	}
 }
 
 #section5.grid-item {
-		background-color: $primary-color;
-		display: grid;
-		grid-gap: 10px;
-		grid-template-areas:
-			"footer-1"
-			"footer-2"
-			"footer-3"
-			"social"
-			"copyright";
-		grid-template-columns: fit-content;
-		justify-items: stretch;
-		max-height: min-content;
-		padding-bottom: 1rem;
-		width: inherit;
-	
-		@media screen and (min-width: 600px) {
-			grid-template-areas:
-				"footer-1 footer-1"
-				"footer-2 footer-3"
-				"copyright social";
-		}
-	
-		@media screen and (min-width: 1200px) {
-			grid-template-areas:
-				"footer-1 footer-2 footer-3"
-				"copyright social social";
-		}
-	
-		div[class^="footer"] {
-			font-size: $font-size;
-		}
-	
-		& > div {
-			padding: 1rem;
-			text-align: center;
-		}
-	
-		.footer-1 {
-			grid-area: footer-1;
-			
-			@media screen and (min-width: 600px) {
-				text-align: left;
-			}
-		}
-	
-		.footer-2 {
-			grid-area: footer-2;
-			
-			@media screen and (min-width: 600px) {
-				text-align: left;
-			}
-			
-			@media screen and (min-width: 1200px) {
-				text-align: center;
-			}
-		}
-	
-		.footer-3 {
-			grid-area: footer-3;
-			
-			@media screen and (min-width: 600px) {
-				text-align: left;
-			}
-			
-			@media screen and (min-width: 1200px) {
-				text-align: right;
-			}
-		}
-	
-		.social {
-			grid-area: social;
-		
-		}
-	
-		.copyright {
-			grid-area: copyright;
-			
-			@media screen and (min-width: 600px) {
-				text-align: left;
-			}
-		}
-}
-
-
-/* copyright detail */
-
-.copyright > sub > span {
-	color: white;
-}
-.copyright > sub {
-	color: darken($hover-color, 10%);
+	background-color: $primary-color;
 }
